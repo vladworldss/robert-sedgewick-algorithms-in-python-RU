@@ -38,7 +38,7 @@ M - число операций объединений.
 """
 import sys
 
-from template import Connectivity, make_connect_table
+from template import BaseConnectivity, make_connect_table, test_connectivity
 
 __author__     = "Vladimir Gerasimenko"
 __copyright__  = "Copyright (C) 2018, Vladimir Gerasimenko"
@@ -72,12 +72,12 @@ def pure_quick_find(N=10):
             return _id
 
 
-class QuickFind(Connectivity):
+class Connectivity(BaseConnectivity):
     """
     Класс, реализующий логику быстрого поиска.
     """
-    def __init__(self, size):
-        super().__init__(size)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def find(self, p, q):
         """
@@ -113,26 +113,13 @@ class QuickFind(Connectivity):
         return p, q
 
 
-def test_custom():
-    c = QuickFind(N)
-    input_pairs = (
-        (3, 4),
-        (4, 9),
-        (8, 0),
-        (2, 3),
-        (5, 6),
-        (2, 9),
-        (5, 9),
-        (7, 3),
-        (4, 8),
-        (5, 6),
-        (0, 2),
-        (6, 1)
-    )
-    for pair in input_pairs:
-        c.union(*pair)
-    assert all(x is 1 for x in c.arr)
-    return c.arr
+# --------------------------------
+#           TESTS
+# --------------------------------
+def test():
+    ETALON_RES = [1 for _ in range(10)]
+    return test_connectivity(Connectivity, ETALON_RES)
+# --------------------------------
 
 
 if __name__ == '__main__':
@@ -156,9 +143,9 @@ if __name__ == '__main__':
             pure_quick_find()
         elif "test" in args[1]:
             pure_res = pure_quick_find()
-            custom_res = test_custom()
+            custom_res = test()
             assert pure_res == custom_res
     else:
         print("CUSTOM CONNECTIVITY")
-        res = make_connect_table(QuickFind)
+        res = make_connect_table(Connectivity)
         print(res)

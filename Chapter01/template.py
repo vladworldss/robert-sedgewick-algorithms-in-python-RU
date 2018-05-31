@@ -3,9 +3,10 @@
 Модуль базового класса для решения задач связности.
 """
 import sys
+import pytest
 
 
-class Connectivity(object):
+class BaseConnectivity(object):
     """
     Базовый класс для создания исходной таблицы связности
     и поиска - объединения связанных компонентов.
@@ -89,3 +90,26 @@ def make_connect_table(Cls, *args, **kw):
     inst = Cls(*args, **kw)
     inst.main()
     return inst.arr
+
+
+INPUT_PAIRS = (
+            (3, 4),
+            (4, 9),
+            (8, 0),
+            (2, 3),
+            (5, 6),
+            (2, 9),
+            (5, 9),
+            (7, 3),
+            (4, 8),
+            (5, 6),
+            (0, 2),
+            (6, 1)
+        )
+@pytest.mark.skip(reason="it's not a fixture")
+def test_connectivity(Cls, ETALON_RES, input_pairs=INPUT_PAIRS):
+    c = Cls()
+    for pair in input_pairs:
+        c.union(*pair)
+    assert c.arr == ETALON_RES
+    return c.arr
