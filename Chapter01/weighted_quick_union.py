@@ -2,6 +2,9 @@
 """
 Ex1.3: Взвешенная версия быстрого объединения.
 """
+from random import randint
+from math import fabs
+
 from template import make_connect_table, test_connectivity
 from quick_union import Connectivity as QuickUnionConnectivity
 
@@ -55,6 +58,24 @@ class Connectivity(QuickUnionConnectivity):
 def test_custom_weighted():
     ETALON_RES = [8, 3, 3, 3, 3, 3, 5, 3, 3, 3]
     return test_connectivity(Connectivity, ETALON_RES)
+
+
+def test_big_input():
+    """
+    Тест анализирует глубину дерева.
+    Дано - 100 объектов.
+    Цель - убедиться, что на большом количестве пар (100, 1000, 10000)
+    глубина в 95% не больше 2.
+    """
+    input_pair = ((randint(0, 99), randint(0, 99)) for _ in range(100))
+    c = Connectivity(100)
+
+    for pair in input_pair:
+        c.union(*pair)
+
+    min_root, max_root = min(c.arr), max(c.arr)
+    assert (1 - (max_root - min_root)/100) > 0.95
+
 # --------------------------------
 
 
