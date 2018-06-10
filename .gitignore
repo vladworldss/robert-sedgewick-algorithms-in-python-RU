@@ -109,3 +109,9 @@ ENV/
 
 # Pytest
 .pytest_cache
+
+# Cmake
+cmake-build-debug
+*.stackdump
+*.o
+*.exe
