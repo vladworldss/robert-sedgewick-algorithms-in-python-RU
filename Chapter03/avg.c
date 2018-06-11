@@ -1,14 +1,12 @@
-//
-// Created by Workstation on 10.06.2018.
-//
-
+/*
+ * Реализация <Программа 3.2>
+*/
 #include <stdlib.h>
+
 #include "avg.h"
 
+
 Number get_rand_num(){
-    /* Функция возвращает случайное число
-     *
-     * */
     return rand();
 }
 
