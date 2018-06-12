@@ -6,7 +6,7 @@
 #include "eratosthenes_sieve.h"
 
 
-int sieve(int ARRAY_SIZE){
+int sieve(int ARRAY_SIZE, int* out_array){
     int array[ARRAY_SIZE];
     int ar_idx = 0;
 
@@ -28,11 +28,11 @@ int sieve(int ARRAY_SIZE){
         }
     }
 
-    // Выводим на печать результаты. Число элементов в строке <= 10.
-    for (ar_idx = 2; ar_idx < ARRAY_SIZE; ar_idx++){
-        printf("%d ", array[ar_idx]);
-        if ((ar_idx % 10) == 0){
-            printf("\r\n");
+    // Копируем результаты в выходной массив
+    for (int out_idx = 0, ar_idx = 2; ar_idx < ARRAY_SIZE; ar_idx++){
+        if (array[ar_idx] == 1){
+            out_array[out_idx] = ar_idx;
+            out_idx++;
         }
     }
 

@@ -14,7 +14,10 @@
 int main(int argc, char** argv){
 
     // =======================
-    printf("********* Example 3.2:\n");
+    printf("\n*********\n");
+    printf("Example 3.2:\n");
+    printf("*********\n");
+
     int N = atoi(argv[1]);
     AvgResult res;
     res = getAvg(N);
@@ -22,7 +25,10 @@ int main(int argc, char** argv){
     printf("Std. deviation: %f\n", res.std_dev);
 
     // =======================
-    printf("********* Example 3.3:\n");
+    printf("\n*********\n");
+    printf("Example 3.3:\n");
+    printf("*********\n");
+
     Point p1 = {2.333333333, 5.7777777777777777};
     Point p2 = {7.0, 8.0};
 
@@ -41,9 +47,37 @@ int main(int argc, char** argv){
     printf("Distance between: %f\n", d);
 
     // =======================
-    printf("********* Example 3.5:\n");
-    const int SIEVE_SIZE = 100;
+    printf("\n*********\n");
+    printf("Example 3.5:\n");
+    printf("*********\n");
 
-    sieve(SIEVE_SIZE);
+    const int SIEVE_SIZE = 1000;
+
+    /*Массив, где будут храниться простые числа.
+     * Чтобы исключить попадание "мусора" в результаты -
+     * инициализируем -1.
+     * */
+    const int OUT_SIZE = SIEVE_SIZE/2;
+    int out_array[OUT_SIZE];
+    for(int i=0; i< OUT_SIZE; i++){
+        out_array[i] = -1;
+    }
+
+    // Вычисляем первые SIEVE_SIZE простых чисел
+    sieve(SIEVE_SIZE, out_array);
+
+    // Выводим на печать результаты. Число элементов в строке <= 10.
+    printf("FIRST %d SIMPLE VALUES\n\n", SIEVE_SIZE);
+    for (int printed = 0, idx = 0; idx < OUT_SIZE; idx++){
+        if (out_array[idx] > 0){
+            printf("%d ", out_array[idx]);
+            printed++;
+        }
+
+        if (printed > 0 & ((printed % 10) == 0)){
+            printf("\r\n");
+        }
+    }
+
     return 0;
 }

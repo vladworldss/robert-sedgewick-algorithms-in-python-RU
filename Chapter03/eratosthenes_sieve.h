@@ -6,6 +6,6 @@
 #define CHAPTER03_ERATOSTHENES_SIEVE_H
 
 
-int sieve(int);
+int sieve(int, int*);
 
 #endif //CHAPTER03_ERATOSTHENES_SIEVE_H
