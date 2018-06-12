@@ -8,17 +8,21 @@
 
 #include "avg.h"
 #include "point.h"
+#include "eratosthenes_sieve.h"
 
 
 int main(int argc, char** argv){
-    printf("Example 3.2:\n");
+
+    // =======================
+    printf("********* Example 3.2:\n");
     int N = atoi(argv[1]);
     AvgResult res;
     res = getAvg(N);
     printf("Mean value: %f\n", res.avg);
     printf("Std. deviation: %f\n", res.std_dev);
+
     // =======================
-    printf("Example 3.3:\n");
+    printf("********* Example 3.3:\n");
     Point p1 = {2.333333333, 5.7777777777777777};
     Point p2 = {7.0, 8.0};
 
@@ -34,6 +38,12 @@ int main(int argc, char** argv){
 
     // Calc distance
     float d = distance(p1, p2);
-    printf("Distance betwee: %f\n", d);
+    printf("Distance between: %f\n", d);
+
+    // =======================
+    printf("********* Example 3.5:\n");
+    const int SIEVE_SIZE = 100;
+
+    sieve(SIEVE_SIZE);
     return 0;
 }
