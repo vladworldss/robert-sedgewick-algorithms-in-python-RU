@@ -47,6 +47,7 @@ int main(int argc, char** argv){
             printed = 0;
         }
     }
-
+    if (array != NULL)
+        free(array);
     return 0;
 }
