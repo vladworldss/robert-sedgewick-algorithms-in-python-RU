@@ -6,7 +6,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "point.h"
+#include "ex3_3.h"
 
 
 float distance(Point a, Point b){

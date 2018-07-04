@@ -1,9 +1,9 @@
 //
-// Created by Workstation on 12.06.2018.
+// Реализация Програмы 3.5 Решето Эратосфена
 //
 #include <stdio.h>
 
-#include "eratosthenes_sieve.h"
+#include "ex3_5.h"
 
 
 int sieve(int ARRAY_SIZE, int* out_array){

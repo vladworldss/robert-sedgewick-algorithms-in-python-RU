@@ -2,8 +2,8 @@
  * Заголовочные файлы <Программы 3.2 _Типы чисел_>
  */
 
-#ifndef ROBERT_SEDGEWICK_ALGORITHMS_IN_PYTHON_RU_AVG_H
-#define ROBERT_SEDGEWICK_ALGORITHMS_IN_PYTHON_RU_AVG_H
+#ifndef CHAPTER03_EX3_2_H
+#define CHAPTER03_EX3_2_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,4 +26,4 @@ Number get_rand_num(void);
  * */
 AvgResult getAvg(int);
 
-#endif //ROBERT_SEDGEWICK_ALGORITHMS_IN_PYTHON_RU_AVG_H
+#endif //CHAPTER03_EX3_2_H

@@ -1,6 +1,6 @@
 //
-// Created by Workstation on 10.06.2018.
-//
+// Реализация Програмы 3.6 Решето Эратосфена с
+// динамическим выделением памяти под массив
 
 #include <stdio.h>
 #include <math.h>
@@ -9,7 +9,6 @@
 
 int main(int argc, char** argv){
 
-    // =======================
     printf("\n*********\n");
     printf("Example 3.6:\n");
     printf("*********\n");
@@ -22,7 +21,7 @@ int main(int argc, char** argv){
         return -1;
     }
 
-    int ar_idx =0;
+    int ar_idx = 0;
     for(ar_idx = 2; ar_idx < SIEVE_SIZE; ar_idx++){
         array[ar_idx] = 1;
     }
@@ -47,7 +46,10 @@ int main(int argc, char** argv){
             printed = 0;
         }
     }
-    if (array != NULL)
+    if (array != NULL){
         free(array);
+        printf("Memory was cleaned.")
+    }
+
     return 0;
 }

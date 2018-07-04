@@ -5,8 +5,6 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "bernoulli.h"
-
 const float RAND_MAX_F = RAND_MAX;
 
 int heads(){

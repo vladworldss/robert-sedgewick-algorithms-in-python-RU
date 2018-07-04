@@ -3,7 +3,7 @@
 */
 #include <stdlib.h>
 
-#include "avg.h"
+#include "ex3_2.h"
 
 
 Number get_rand_num(){

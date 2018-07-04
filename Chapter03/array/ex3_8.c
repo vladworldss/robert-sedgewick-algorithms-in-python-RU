@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../point.h"
+#include "../common/ex3_3.h"
 
 
 float rand_float(){
@@ -40,6 +40,6 @@ int main(int argc, char** argv){
 		}
 	}
 
-	printf("%d edges shorter than %d", cnt, min_dist);
+	printf("%d edges shorter than %d\n", cnt, min_dist);
 	return 0;
 }

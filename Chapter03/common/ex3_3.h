@@ -2,15 +2,14 @@
  * Заголовочные файлы Программ 3.3 и 3.4
  */
 
-#ifndef CHAPTER03_POINT_H
-#define CHAPTER03_POINT_H
+#ifndef CHAPTER03_EX3_3_H
+#define CHAPTER03_EX3_3_H
 
 /*Размер атрибута координаты типа Point. */
 #define POINT_COORD_SIZE 32
 
 /*Размер строкового представления типа Point. */
 #define POINT_STR_SIZE 128
-
 
 typedef struct {
     float x;
@@ -37,4 +36,4 @@ int int_to_str(float, char*);
  * */
 int point_to_sting(Point, char*);
 
-#endif //CHAPTER03_POINT_H
+#endif //CHAPTER03_EX3_3_H
