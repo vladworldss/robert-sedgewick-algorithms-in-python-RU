@@ -64,9 +64,8 @@ int main(int argc, char** argv){
 
         printf("deleted item: %d\n", l_current_node->next->item);
         l_current_node->next = l_current_node->next->next;
-
-
     }
+
     printf("The Highlander: %d\n", l_current_node->item);
     free(l_current_node);
     free(l_first_node);
