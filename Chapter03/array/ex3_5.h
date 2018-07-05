@@ -12,6 +12,6 @@ __email__      = "vladworldss@yandex.ru"
 #define CHAPTER03_EX3_5_H
 
 
-int sieve(int, int*);
+int sieve(unsigned, unsigned*);
 
 #endif //CHAPTER03_EX3_5_H

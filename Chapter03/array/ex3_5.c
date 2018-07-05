@@ -6,9 +6,9 @@
 #include "ex3_5.h"
 
 
-int sieve(int ARRAY_SIZE, int* out_array){
-    int array[ARRAY_SIZE];
-    int ar_idx = 0;
+int sieve(unsigned ARRAY_SIZE, unsigned* out_array){
+    unsigned array[ARRAY_SIZE];
+    unsigned ar_idx = 0;
 
     /* Вначале проставляем 1 во всех ячейках массива,
      * кроме 0 и 1 - они не являются простыми и не пропускаются.
@@ -22,14 +22,14 @@ int sieve(int ARRAY_SIZE, int* out_array){
             /*Присваиваем 0 элементам, индексы которых не являются
              * простыми числами (представляют собой произведения простых чисел).
              * */
-            for (int inner_idx = ar_idx; inner_idx*ar_idx < ARRAY_SIZE; inner_idx++){
+            for (unsigned inner_idx = ar_idx; inner_idx*ar_idx < ARRAY_SIZE; inner_idx++){
                 array[inner_idx*ar_idx] = 0;
             }
         }
     }
 
     // Копируем результаты в выходной массив
-    for (int out_idx = 0, ar_idx = 2; ar_idx < ARRAY_SIZE; ar_idx++){
+    for (unsigned out_idx = 0, ar_idx = 2; ar_idx < ARRAY_SIZE; ar_idx++){
         if (array[ar_idx] == 1){
             out_array[out_idx] = ar_idx;
             out_idx++;
