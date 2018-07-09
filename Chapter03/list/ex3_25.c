@@ -27,8 +27,7 @@ int list_distance(Link l_source_node, Link l_dest_node){
 Link range_list(const unsigned list_size, int start_item){
 
     // Выделяем память под ссылку
-    size_t LINK_SIZE = sizeof(Link);
-    const Link l_first_node = calloc(LINK_SIZE, LINK_SIZE);
+    const Link l_first_node = calloc(1, sizeof(*l_first_node));
 
     l_first_node->item = start_item;
     l_first_node->next = l_first_node;
@@ -37,7 +36,7 @@ Link range_list(const unsigned list_size, int start_item){
     Link l_current_node = l_first_node;
 
     for (unsigned i=start_item+1; i <= list_size; i++){
-        l_current_node = (l_current_node->next = calloc(LINK_SIZE, LINK_SIZE));
+        l_current_node = (l_current_node->next = calloc(1, sizeof(*l_current_node)));
         l_current_node->item = i;
         l_current_node->next = l_first_node;
     }
