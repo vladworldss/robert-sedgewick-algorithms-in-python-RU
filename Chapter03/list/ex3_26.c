@@ -1,6 +1,8 @@
-//
-// Created by vladworldss on 06.07.18.
-//
+/*
+ * Реализация программы 3.26: Напишите фрагмент кода, который определяет число
+ * узлов в циклическом списке, находящихся между узлами, на которые
+ * ссылаются два заданных указателя х и t.
+ * */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,6 +10,10 @@
 
 
 int insert_list(Link extended_node, Link insert_node){
+    /* Функция вставки циклического списка.
+     * Вставляемый список разворачивается.
+     * */
+
     // Без проверки на пересечение
     Link ext_next_node = extended_node->next;
     extended_node->next = insert_node;
@@ -27,6 +33,9 @@ int insert_list(Link extended_node, Link insert_node){
 
 
 Link range_list(const unsigned list_size, int start_item){
+    /* Функция создает циклический список, заполняя поля item
+     * целыми числами в диапазоне start_item...start_item+list_size-1
+     * */
 
     // Выделяем память под ссылку
     const Link l_first_node = calloc(1, sizeof(*l_first_node));

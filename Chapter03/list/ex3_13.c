@@ -28,4 +28,3 @@ int main(int argc, char** argv){
     printf("The Highlander: %d\n", get_item(x));
     return 0;
 }
-
