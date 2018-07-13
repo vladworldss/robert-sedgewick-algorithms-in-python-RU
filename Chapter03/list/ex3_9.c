@@ -67,6 +67,5 @@ int main(int argc, char** argv){
 
     printf("The Highlander: %d\n", l_current_node->item);
     free(l_current_node);
-    free(l_first_node);
     return 0;
 }
