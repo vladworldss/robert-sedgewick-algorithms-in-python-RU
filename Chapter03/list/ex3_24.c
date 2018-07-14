@@ -37,8 +37,7 @@ int main(int argc, char** argv){
     }
 
     // Выделяем память под ссылку
-    size_t LINK_SIZE = sizeof(Link);
-    const Link l_first_node = calloc(LINK_SIZE, LINK_SIZE);
+    const Link l_first_node = calloc(1, sizeof(*l_first_node));
     l_first_node->item = 1;
     l_first_node->next = l_first_node;
 
@@ -46,7 +45,7 @@ int main(int argc, char** argv){
     Link l_current_node = l_first_node;
 
     for (int i=2; i <= N; i++){
-        l_current_node = (l_current_node->next = calloc(LINK_SIZE, LINK_SIZE));
+        l_current_node = (l_current_node->next = calloc(1, sizeof(*l_current_node)));
         l_current_node->item = i;
         l_current_node->next = l_first_node;
     }

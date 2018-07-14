@@ -14,15 +14,14 @@ int main(int argc, char** argv){
     }
 
     // Выделяем память под ссылку
-	size_t LINK_SIZE = sizeof(Link);
-	Link l_head_node = calloc(LINK_SIZE, LINK_SIZE);
+	Link l_head_node = calloc(1, sizeof(*l_head_node));
     l_head_node->item = 1;
 	l_head_node->next = NULL;
 
 	Link l_current_node = l_head_node;
 
 	for (int i=2; i <= N; i++){
-	    l_current_node = (l_current_node->next = calloc(LINK_SIZE, LINK_SIZE));
+	    l_current_node = (l_current_node->next = calloc(1, sizeof(*l_current_node)));
 	    l_current_node->item = i;
 	    l_current_node->next = NULL;
 	}
