@@ -3,6 +3,7 @@
 
 #include "list.h"
 
+
 int main(int argc, char** argv){
 
     // размер списка - число узлов
@@ -14,13 +15,13 @@ int main(int argc, char** argv){
 
 	Node head_a;
 	Link l_a_node = &head_a;
-	
-	for (Link l_cur_node = l_a_node, int i = 0; i < N; i++){
-		
+
+	Link l_cur_node = l_a_node;
+	for (int i = 0; i < N; i++){
 		l_cur_node->next = malloc(sizeof(*l_cur_node));
 		l_cur_node = l_cur_node->next;
 		l_cur_node->next = NULL;
-		l_cur_node->item rand() % 100;
+		l_cur_node->item = rand() % 100;
 	}
 
 	Node head_b;
@@ -33,7 +34,6 @@ int main(int argc, char** argv){
 		l_a_cur_node != NULL; 
 		l_a_cur_node = l_next_node
 		){
-
 			l_next_node = l_a_cur_node->next;
 			for (
 				l_b_cur_node = l_b_node; 

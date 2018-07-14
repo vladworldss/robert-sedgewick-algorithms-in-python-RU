@@ -4,22 +4,6 @@
 #include "list.h"
 
 
-Link reverse(Link head){
-    Link l_current_node = head;
-    Link l_next_node;
-    Link tail = NULL;
-
-    while(l_current_node != NULL){
-        l_next_node = l_current_node->next;
-        l_current_node->next = tail;
-        tail = l_current_node;
-        l_current_node = l_next_node;
-    }
-    return tail;
-
-}
-
-
 int main(int argc, char** argv){
 
     // размер списка - число узлов
@@ -60,7 +44,5 @@ int main(int argc, char** argv){
         cur_node = cur_node->next;
     }
     printf("\n");
-
-
     return 0;
 }

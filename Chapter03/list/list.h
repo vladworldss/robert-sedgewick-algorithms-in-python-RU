@@ -10,4 +10,8 @@ struct Node{
     Link next;
 };
 
+Link reverse(Link);
+
+unsigned list_size(Link);
+
 #endif //CHAPTER03_LIST_H

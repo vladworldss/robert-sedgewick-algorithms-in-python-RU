@@ -10,27 +10,6 @@
 static const TRUE = 1;
 
 
-long get_count_nodes(Link l_input_node){
-
-    if (l_input_node == NULL){
-        return -1;
-
-    } else if (l_input_node->next == l_input_node){
-        return 1;
-
-    } else {
-        unsigned res = 0;
-        Link l_cur_node = l_input_node;
-
-        do{
-            l_cur_node = l_cur_node->next;
-            res++;
-        }
-        while(l_cur_node != l_input_node);
-        return res;
-    }
-}
-
 Link rand_node(Link head, unsigned LIST_SIZE){
     int rand_node_idx = rand() % LIST_SIZE;
     Link l_cur_node = head;
@@ -73,6 +52,6 @@ int main(int argc, char** argv){
     }
 
     l_current_node = rand_node(l_current_node, N);
-    assert((int) get_count_nodes(l_current_node) == N);
+    assert((int) list_size(l_current_node) == N);
     return 0;
 }
