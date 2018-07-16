@@ -52,11 +52,8 @@ int main(int argc, char** argv){
     x->next->next = x_;
 
     Link cur_node = head;
-    do{
-        printf("%d->", cur_node->item);
-        cur_node = cur_node->next;
-    }while (cur_node->next != head);
-    printf("\n");
+    const char* delim = "->";
+    print_list(head, delim);
 
     return 0;
 }

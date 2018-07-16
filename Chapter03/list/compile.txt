@@ -1,0 +1,25 @@
+gcc -c -fPIC list.c
+gcc -shared -o liblist.so list.o
+gcc -c ex3_27.c
+gcc -o ex3_27 ex3_27.o -L. -l:liblist.so -Wl,-rpath,.
+
+
+# для биндингов
+
+# обновление зеркал
+apt-cyg -m update http://mirror.yandex.ru/mirrors/ftp.cygwin.com/
+
+# установка apt-cyg
+$ cd /bin/
+$ wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
+$ chmod +x apt-cyg
+$ mv apt-cyg /usr/local/bin
+
+Команда результата не дала
+$ apt-cyg install python-dev
+
+Т.к. сейчас валидны python2-devel или python3-devel
+$ apt-cyg install python2-devel
+
+gcc -c $(python2.7-config --cflags) call_function.c
+gcc -o call_function  call_function.o $(/usr/bin/python2.7-config --ldflags)
