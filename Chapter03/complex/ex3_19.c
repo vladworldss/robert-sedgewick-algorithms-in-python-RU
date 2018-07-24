@@ -15,11 +15,34 @@ Link NEW(int v, Link next){
     return x;
 }
 
+
+void print_matrix(Link* m, unsigned size){
+    for (int i = 0; i < size; i++){
+        Link cur = m[i];
+
+        while (cur != NULL){
+            printf("%d->", cur->item);
+            cur = cur->next;
+        }
+        printf("\n");
+    }
+
+}
+
+
 int main(int argc, char** argv){
     unsigned N = atoi(argv[1]);
     Link adj[N];
 
+    int i, j;
+    for (i = 0; i < N; i++){
+        adj[i] = NULL;
+    }
 
-
+    while(scanf("%d %d", &i, &j) == 2){
+        adj[j] = NEW(i, adj[j]);
+        adj[i] = NEW(j, adj[i]);
+    }
+    print_matrix(adj, N);
     return 0;
 }

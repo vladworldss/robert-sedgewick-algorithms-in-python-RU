@@ -37,6 +37,7 @@ void print_matrix(int** m, unsigned size){
 
 }
 
+
 int main(int argc, char** argv){
     int i, j;
     unsigned N = atoi(argv[1]);
