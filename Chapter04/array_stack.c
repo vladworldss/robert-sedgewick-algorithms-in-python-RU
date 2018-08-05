@@ -18,7 +18,6 @@
 #include "Item.h"
 #include "Stack.h"
 
-
 static Item* s;
 static int N;
 

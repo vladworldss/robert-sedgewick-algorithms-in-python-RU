@@ -8,7 +8,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define Nmax 1000
+#define MAX_STR_NUM 10
+#define MAX_STR_SIZE 1024
 
 /*Сравнивает два символа путем разыменования указателей на str*/
 int compare(void* i, void* j){
@@ -17,23 +18,31 @@ int compare(void* i, void* j){
 
 
 int main(int argc, char** argv){
-    unsigned N=0;
-    char** a;
 
-    char* s;
-    while(scanf("%s", s) == EOF || !strcmp(a[N], "--Q") || N < Nmax){
-        a[N] = calloc(strlen(s), sizeof(char));
-        strcpy(a[N], s);
+    char** a = calloc(MAX_STR_NUM, sizeof(char*));
+    char* input_str = calloc(MAX_STR_SIZE, sizeof(char));
+
+    unsigned N=0;
+
+    while(scanf("%s", input_str) && strcmp(input_str, "--Q") && N < MAX_STR_NUM){
+        a[N] = calloc(strlen(input_str), sizeof(char));
+        strcpy(a[N], input_str);
         N++;
     }
 
-
-    fprintf(stdout, "sorted...\n");
+    // Сортируем строки в порядке возрастания
     qsort(a, N, sizeof(char*), compare);
 
     fprintf(stdout, "Sorted strings:\n");
     for (int i = 0; i < N; i++)
         printf("%s\n", a[i]);
+    fprintf(stdout, "\n");
 
+    fprintf(stdout, "Free memory...\n");
+    free(input_str);
+    for (int i =0; i < N; i++){
+        free(a[i]);
+    }
+    free(a);
     return 0;
 }

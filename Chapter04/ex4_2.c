@@ -4,13 +4,9 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #include "Item.h"
 #include "Stack.h"
-
-#define PLUS '+'
-#define MUL  '*'
-#define ZERO '0'
-#define NINE '9'
 
 
 int main(int argc, char** argv){
@@ -31,10 +27,20 @@ int main(int argc, char** argv){
             stack_push(stack_pop() * stack_pop());
         }
 
+        // инициализируем стек нулем, чтобы избежать StackPopError
         else if((a[i] >= ZERO) && (a[i] <= NINE)){
             stack_push(0);
         }
 
+        /* переводим число, пока не встретиться НЕ-числовой символ
+        * 123 =
+        *    1. stack.push(0) --> stack([0])
+        *    2. stack.push(10*stack.pop() --> 10*0 + ('1'-'0')) --> stack([1])
+        *    3. stack.push(10*stack.pop() --> 10*1 + ('2'-'0')) --> stack([12])
+        *    3. stack.push(10*stack.pop() --> 10*12 + ('3'-'0')) --> stack([123])
+        *
+        * В бесконечном цикле происходит постфикс_инкремент указателя строки
+        */
         while((a[i] >= ZERO) && (a[i] <= NINE)){
             stack_push(10*stack_pop() + (a[i++] - ZERO));
         }
