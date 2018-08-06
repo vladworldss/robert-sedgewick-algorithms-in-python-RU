@@ -8,7 +8,7 @@
 #define ROBERT_SEDGEWICK_ALGORITHMS_IN_PYTHON_RU_UNIONFIND_H
 
 void UFinit(int);
-int UFfinf(int, int);
+int UFfind(int, int);
 void UFunion(int, int);
 
 #endif
