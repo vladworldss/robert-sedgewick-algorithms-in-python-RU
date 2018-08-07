@@ -10,3 +10,31 @@
  * на 1 больше максимального числа элементов очереди, ожидаемого программой-клиентом.
  * */
 
+#include <stdlib.h>
+
+#include "Item.h"
+#include "Queue.h"
+
+static Item* q;
+static int N, head, tail;
+
+void queue_init(int maxN){
+    q = calloc(maxN+1, sizeof(Item));
+    N = maxN+1;
+    head = N;
+    tail = 0;
+}
+
+int queue_empty(){
+    return head % N == tail;
+}
+
+void queue_put(Item item){
+    q[tail++] = item;
+    tail = tail % N;
+}
+
+Item queue_get(){
+    head = head % N;
+    return q[head++];
+}
