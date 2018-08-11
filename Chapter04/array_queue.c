@@ -11,12 +11,19 @@
  * */
 
 #include <stdlib.h>
+#include <errno.h>
 
 #include "Item.h"
 #include "Queue.h"
 
 static Item* q;
 static int N, head, tail;
+
+void QueueError(char* msg){
+    perror(msg);
+    exit(1);
+}
+
 
 void queue_init(int maxN){
     q = calloc(maxN+1, sizeof(Item));
@@ -30,8 +37,13 @@ int queue_empty(){
 }
 
 void queue_put(Item item){
+	if (tail > N){
+		errno = EAGAIN;
+		QueueError("Queue is full");
+	}
+
     q[tail++] = item;
-    tail = tail % N;
+    // tail = tail % N;
 }
 
 Item queue_get(){

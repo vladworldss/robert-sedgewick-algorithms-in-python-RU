@@ -16,6 +16,7 @@
 
 
 #include <stdlib.h>
+#include <errno.h>
 
 #include "Item.h"
 #include "Queue.h"
@@ -28,6 +29,12 @@ struct QueueNode{
 };
 
 static Link head, tail;
+
+void QueueError(char* msg){
+    perror(msg);
+    exit(1);
+}
+
 
 Link new_node(Item item, Link next){
     Link x = calloc(1, sizeof(*x));
@@ -54,7 +61,13 @@ void queue_put(Item item){
     tail = tail->next;
 }
 
+
 Item queue_get(){
+    if (queue_empty()){
+        errno = EAGAIN;
+        QueueError("Queue is empty");
+    }
+
     Item item = head->item;
     Link t = head->next;
     free(head);

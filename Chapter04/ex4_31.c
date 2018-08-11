@@ -39,6 +39,5 @@ int main(int argc, char **argv){
 		}
 		SEQ_PRT++;
 	}
-
 	return 0;
 }

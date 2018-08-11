@@ -12,6 +12,7 @@
 
 #include "Item.h"
 
+void QueueError(char*);
 void queue_init(int);
 int queue_empty();
 void queue_put(Item);

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 project(Chapter04)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
 
-
+# используем для перегрузки типа Item в Item.h
 add_definitions(-DUSE_CHAR_ITEM=1)
 
 add_library(array_stack STATIC array_stack.c)
@@ -32,3 +32,9 @@ add_executable(ex4_31_array ex4_31.c)
 add_executable(ex4_31_list ex4_31.c)
 target_link_libraries(ex4_31_array array_queue)
 target_link_libraries(ex4_31_list list_queue)
+
+
+add_executable(ex4_32_list ex4_32.c)
+add_executable(ex4_32_array ex4_32.c)
+target_link_libraries(ex4_32_list list_queue)
+target_link_libraries(ex4_32_array array_queue)
