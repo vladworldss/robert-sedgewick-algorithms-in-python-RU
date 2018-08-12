@@ -29,6 +29,8 @@ struct QueueNode{
 };
 
 static Link head, tail;
+static unsigned N;
+static unsigned USED_NODES;
 
 void QueueError(char* msg){
     perror(msg);
@@ -45,6 +47,8 @@ Link new_node(Item item, Link next){
 
 void queue_init(int maxN){
     head = NULL;
+    N = maxN;
+    USED_NODES = 0;
 }
 
 int queue_empty(){
@@ -52,13 +56,20 @@ int queue_empty(){
 }
 
 void queue_put(Item item){
-    if (head == NULL){
-        head = (tail = new_node(item, head));
-        return;
+    if (USED_NODES > N){
+        errno = EAGAIN;
+        QueueError("Queue is full");
     }
 
-    tail->next = new_node(item, tail->next);
-    tail = tail->next;
+    if (head == NULL){
+        head = (tail = new_node(item, head));
+    }
+
+    else {
+        tail->next = new_node(item, tail->next);
+        tail = tail->next;
+    }
+    USED_NODES++;
 }
 
 
@@ -72,5 +83,6 @@ Item queue_get(){
     Link t = head->next;
     free(head);
     head = t;
+    USED_NODES--;
     return item;
 }

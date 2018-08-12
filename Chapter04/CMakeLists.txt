@@ -33,7 +33,8 @@ add_executable(ex4_31_list ex4_31.c)
 target_link_libraries(ex4_31_array array_queue)
 target_link_libraries(ex4_31_list list_queue)
 
-
 add_executable(ex4_32 ex4_32.c)
 target_link_libraries(ex4_32 array_queue)
 
+add_executable(ex4_33 ex4_33.c)
+target_link_libraries(ex4_33 list_queue)
