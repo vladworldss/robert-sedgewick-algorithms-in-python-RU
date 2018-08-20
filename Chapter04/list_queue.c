@@ -40,6 +40,11 @@ void QueueError(char* msg){
 
 Link new_node(Item item, Link next){
     Link x = calloc(1, sizeof(*x));
+    if (x == NULL){
+        errno = ENOMEM;
+        QueueError("Memory doesn't allocate");
+    }
+
     x->item = item;
     x->next = next;
     return x;
@@ -56,11 +61,6 @@ int queue_empty(){
 }
 
 void queue_put(Item item){
-    if (USED_NODES > N){
-        errno = EAGAIN;
-        QueueError("Queue is full");
-    }
-
     if (head == NULL){
         head = (tail = new_node(item, head));
     }
@@ -85,4 +85,9 @@ Item queue_get(){
     head = t;
     USED_NODES--;
     return item;
+}
+
+
+unsigned queue_size(){
+    return USED_NODES;
 }
