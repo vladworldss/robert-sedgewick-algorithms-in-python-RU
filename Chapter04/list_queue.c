@@ -38,6 +38,11 @@ void QueueError(char* msg){
 
 Link new_node(Item item, Link next){
     Link x = calloc(1, sizeof(*x));
+    if (x == NULL){
+        errno = ENOMEM;
+        QueueError("Memory doesn't allocate");
+    }
+
     x->item = item;
     x->next = next;
     return x;
@@ -78,4 +83,9 @@ Item queue_get(){
     free(head);
     head = t;
     return item;
+}
+
+
+unsigned queue_size(){
+    return USED_NODES;
 }
