@@ -33,16 +33,28 @@ def get_simple_factorial():
 def get_tree_factorial():
     return libc.treeFactorial
 
+@unsigned_fact_args
+@uint_arg
+def get_fact_factorial():
+	libc = ctypes.CDLL("./libex5_1_1.so")
+	return libc.factFactorial
+	
 
+# TESTS
 def test_simple_factorial():
     func = get_simple_factorial()
-    return func(50)
+    return func(10)
 
 
 def test_tree_factorial():
     func = get_tree_factorial()
-    return func(50)
+    return func(10)
 
+	
+def test_fact_factorial():
+    func = get_fact_factorial()
+    return func(10)
+	
 
 def navi_fact(N):
     if N < 0:
@@ -55,5 +67,6 @@ def navi_fact(N):
 
 
 if __name__ == "__main__":
-    print(test_simple_factorial())
-    print(test_tree_factorial())
+	print(test_simple_factorial())
+	print(test_tree_factorial())
+	print(test_fact_factorial())
